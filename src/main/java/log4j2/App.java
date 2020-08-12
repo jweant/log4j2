@@ -15,6 +15,27 @@ public class App {
     }
 
     public static void main(String[] args) {
+    	logger.traceEntry();
+    	
+    	User user = new User("name1", "birthday1");
+    	
+    	logger.error("ERROR");
+    	logger.fatal("FATAL");
+    	logger.warn("Warning");
+    	logger.info("This is the greeting {}", new App().getGreeting());
+    	logger.trace("TRACE");
+    	logger.debug("DEBUG");
+  
         System.out.println(new App().getGreeting());
+        
+        // This checks to see if isDebugEnabled twice, once to verify whether to call the functions
+        //   another time to call the functions if debug is enabled
+        if (logger.isDebugEnabled()) {
+            logger.debug("1. Logging in user " + user.getName() + " with birthday " + user.getBirthday());
+        }
+        //  the logging level will only be checked once and the String construction will only occur when debug logging is enabled.
+        logger.debug("2. Logging in user {} with birthday {}", user.getName(), user.getBirthday());
+        logger.traceExit();
     }
+
 }
