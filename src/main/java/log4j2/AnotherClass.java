@@ -1,4 +1,4 @@
-package log4j2;
+package log4j2; // NOSONAR
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

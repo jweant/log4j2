@@ -1,4 +1,6 @@
-package log4j2;
+package log4j2; // NOSONAR
+
+import java.util.Calendar;
 
 public class User {
 
@@ -21,6 +23,10 @@ public class User {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Calendar getBirthdayCalendar() {
+		return Calendar.getInstance();
 	}
 	
 }
