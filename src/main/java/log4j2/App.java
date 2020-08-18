@@ -29,7 +29,7 @@ public class App {
     
     public static void main(String[] args) {
     	logger.traceEntry();
-    	
+    	AnotherClass anotherClass = new AnotherClass();
     	Runtime rt = Runtime.getRuntime();
     	try {
 			Process pr = rt.exec("cmd /c dir");
@@ -68,6 +68,7 @@ public class App {
         //  the logging level will only be checked once and the String construction will only occur when debug logging is enabled.
         logger.debug("2. Logging in user {} with birthday {}", user.getName(), user.getBirthday());
         
+        anotherClass.doSomething();
         
         logger.debug("Opening connection to {}...", SOME_DATA_SOURCE);
         logger.printf(Level.INFO, "Logging in user %1$s with birthday %2$tm %2$te,%2$tY", user.getName(), user.getBirthdayCalendar());
@@ -82,6 +83,7 @@ public class App {
         // 		Disabling sonarqube cause I don't want to deal with it right now
         logger.trace("Some long-running operation returned {}", () -> expensiveOperation()); // NOSONAR
         
+        LoggerObject.getInstance().print("This is to be printed to the LoggerObject class.");
         
         logger.traceExit();
     }

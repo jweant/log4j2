@@ -3,7 +3,7 @@
  
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
-			<PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n" />
+			<PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n" />
 		</Console>
  
 		<RollingFile name="RollingFile" filename="log/AppLog.log"
@@ -14,12 +14,24 @@
 			</Policies>
 			<DefaultRolloverStrategy max="20" />
 		</RollingFile>
- 
+ 		<RollingFile name="RollingFile2" filename="log/LoggerObject.log"
+			filepattern="${logPath}/%d{YYYYMMddHHmmss}-LoggerObject.log">
+			<PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
 	</Appenders>
 	<Loggers>
+		<Logger name="log4j2.LoggerObject" level="info">
+			<!--  <AppenderRef ref="Console" /> -->
+			<AppenderRef ref="RollingFile2" /> 
+		</Logger>
 		<Root level="info">
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="RollingFile" />
 		</Root>
+		
 	</Loggers>
 </Configuration>

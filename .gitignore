@@ -6,3 +6,4 @@ build
 bin
 log/CrunchifyTest.log
 log/AppLog.log
+log/LoggerObject.log
